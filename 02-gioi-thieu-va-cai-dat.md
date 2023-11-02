@@ -1,4 +1,4 @@
-# Trở thành .NET Developer - từ 0 tới hero | 02
+# Giới thiệu tổng quan | Trở thành .NET Developer - từ 0 tới hero | 02
 
 ### Về ngôn ngữ C#
 
