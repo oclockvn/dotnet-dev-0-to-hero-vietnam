@@ -11,5 +11,9 @@ Trong series này, mỗi bài viết sẽ bao gồm các mục:
 
 Nếu ai đó có ý định đi theo series, cách học hiệu quả nhất sẽ là đọc hiểu nội dung lý thuyết (1), làm theo các ví dụ liên quan (2) để đảm bảo mình làm đúng + tự mở rộng ví dụ, sau đó làm các bài tập có trong từng bài viết (3). Mình rất sẵn lòng hộ trợ giải đáp thắc mắc nếu có ai muốn hỏi.
 
+> Trong series, sẽ có nhiều chỗ mình không giải thích hết mà đòi hỏi mọi người phải tự đi tìm hiểu thông qua 2 nguồn chính là google và các AI (ví dụ AI Bard giải thích khá tốt các vấn đề). Nếu vẫn không thỏa đáng thì có thể tham gia nhóm Discord https://discord.gg/yY6sWx7jdN để hỏi trực tiếp.
+
+![bard](img/01/01-bard.png)
+
 Với ý định như vậy, chắc hẳn là những bài viết sẽ có những thiếu sót nhất định. Mình sẽ rất vui lòng đón nhận những ý kiến đóng góp của mọi người để cải thiện qua từng bài viết và xây dựng nội dung tốt hơn.
 
