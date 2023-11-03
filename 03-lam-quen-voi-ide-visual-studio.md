@@ -8,21 +8,21 @@ Visual Studio (VS) là IDE mạnh mẽ và phổ biến cho những LTV (Lập t
 
 Sau khi cài đặt, tùy vào tùy chỉnh và phiên bản, có thể bạn sẽ thấy cửa sổ Start Windows hoặc vào trực tiếp VS:
 
+**Start windows**: bên trái là các projects (dự án) gần đây, bên phải là các shortcut chức năng
 ![start windows](img/03-vs-start-windows.png)
 
-**Start windows**: bên trái là các projects gần đây, bên phải là các shortcut chức năng
-
+hoặc sẽ thấy **Visual Studio** blank
 ![VS blank](img/03-vs-blank.png)
-
-**Visual Studio**: blank
 
 ### Tạo project
 
-Để tạo project, bạn vào File > New > Project
+Để tạo project, bạn vào `File > New > Project`
 
 ![new project](img/03-new-project.png)
 
-Ở đây bạn sẽ thấy các templates bạn sử dụng gần đây phía bên trái (1), hoặc chọn những templates hỗ trợ phía bên phải. Lưu ý chọn đúng ngôn ngữ (C#) cho project của bạn.
+Ở đây bạn sẽ thấy các templates (mẫu dự án) bạn sử dụng gần đây phía bên trái (1), hoặc chọn những templates hỗ trợ phía bên phải. Lưu ý chọn đúng ngôn ngữ (C#) cho project của bạn (2).
+
+![project template](img/03-project-template.png)
 
 Chọn tên cho project và nơi lưu trữ:
 
@@ -45,4 +45,28 @@ Sau khi thành công, bạn có thể bắt đầu viết và chạy chương tr
 
 ![Alt text](img/03-start-debugging.png)
 
-TBC
+### Các Views thông dụng
+
+Views (đôi khi gọi là windows cũng được) là các tab hiển thị các chức năng tương ứng trong VS. Hầu hết các View đều nằm ở menu `View`. `Solution Explorer` là 1 trong nữa view được sử dụng nhiều nhất.
+
+![view](img/03-window-views.png)
+
+> Bạn nên nhớ phím tắt của các view thông dụng để dễ dàng mở khi cần
+
+Xem gif dưới đây để biết các thao tác thông thường với view (pin/unpin, snap, resize), tuy nhiên những thao tác này mình rất ít khi sử dụng:
+
+![view action](img/vs-view-action.gif)
+
+Ngoài ra, đôi khi bạn không tìm thấy view (hoặc bất cứ gì), bạn có thể dùng chức năng tìm kiếm:
+
+![search](img/03-vs-search.png)
+
+### Context menu
+
+> Chắc từ giờ những từ tiếng anh kiểu thế này mình sẽ không dịch nữa, các bạn tự google hen
+
+Context menu sẽ tùy thuộc vào context (nơi bạn bấm chuột phải), sẽ có 4 nơi bạn cần để ý:
+
+**1. trong editor**
+
+![Editor context](03-editor-context.png)
