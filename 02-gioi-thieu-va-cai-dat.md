@@ -57,7 +57,7 @@ dotnet --list-sdks
 
 Nếu kết quả là danh sách những SDK bạn đã cài đặt thì chúc mừng, còn không thì thử google xem chuyện gì đã xảy ra nhen.
 
-:white_check_mark: Excercies
+### :white_check_mark: Excercies
 
 - :black_square_button: Trình biên dịch (compiler) là gì?
 - :black_square_button: Code của bạn được biên dịch và thực thi ra sao?
