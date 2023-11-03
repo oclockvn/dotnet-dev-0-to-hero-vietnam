@@ -124,6 +124,9 @@ Solution có thể chứa nhiều project, ở đây bạn có thể thêm mới
 ### :white_check_mark: Excercies: làm quen với phím tắt và cách hoạt động của nó
 
 Clone repo https://github.com/oclockvn/megax
+
 :black_square_button: dùng chức năng *Code search* để tìm hàm `RequestLeaveAsync`, sau đó tìm những nơi sử dụng hàm đó (*Find all references*)
+
 :black_square_button: Đi tới file `AuthController.cs`, sau đó dùng chức năng *Go to definition* và *Go to implementation* cho chỗ gọi hàm `userService.CreateUserAsync`. Phân biệt điểm khác biệt của 2 chức năng.
+
 :black_square_button: Dùng thử các chức năng comment, bookmark và format document
