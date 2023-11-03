@@ -59,5 +59,5 @@ Nếu kết quả là danh sách những SDK bạn đã cài đặt thì chúc m
 
 :white_check_mark: Excercies
 
-- [] Trình biên dịch (compiler) là gì?
-- [] Code của bạn được biên dịch và thực thi ra sao?
+- :black_square_button: Trình biên dịch (compiler) là gì?
+- :black_square_button: Code của bạn được biên dịch và thực thi ra sao?
