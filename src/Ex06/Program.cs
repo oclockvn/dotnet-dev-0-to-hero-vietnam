@@ -4,7 +4,12 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var isNumber = false;
+            while (!isNumber)
+                {
+                    Console.Write("Please enter number: ");
+                    isNumber = int.TryParse(Console.ReadLine(), out int number);
+                }
         }
     }
 }
