@@ -78,12 +78,12 @@ Sau khi học xong tutorial ở trên - bỏ qua phần OOP - (dự kiến kho�
 - Biết cách ngăn chặn lỗi (Exception) khi chuyển đổi. Ví dụ:
   ```cs
   string s = "2";
-  int n = int.Parse(2); // work, n = 1
+  int n = int.Parse(2); // ✅ n = 1
 
   string s2 = "a";
-  int n2 = int.Parse(s2); // exception => int.TryParse
+  int n2 = int.Parse(s2); // 🚫 exception => dùng int.TryParse
 
-  bool success = int.TryParse(s2, out var n3); // success = false, n3 = 0 (default value)
+  bool success = int.TryParse(s2, out var n3); // success = false, n3 = 0 (default value), no exception
   ```
 - Hiểu về câu điều kiện `if else`, `switch case`
   ```cs
@@ -132,7 +132,7 @@ Sau khi học xong tutorial ở trên - bỏ qua phần OOP - (dự kiến kho�
 
   // nhập đến khi lấy được số
   bool valid = false;
-  while (!valid) // khi nào valid == false thì vẫn cứ lặp (có nghĩa là nếu valid == true thì dừng)
+  while (!valid) // khi nào valid != true (hoặc == false) thì vẫn cứ lặp (có nghĩa là nếu valid == true thì dừng)
   {
     Console.Write("Enter number: ");
     valid = int.TryParse(Console.ReadLine(), out var number);
