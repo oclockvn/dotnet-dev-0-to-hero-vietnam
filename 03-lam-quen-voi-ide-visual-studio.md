@@ -4,7 +4,7 @@ Visual Studio (VS) là IDE mạnh mẽ và phổ biến cho những LTV (Lập t
 
 > Nếu làm việc cá nhân thì bạn nên sử dụng phiên bản Community, là phiên bản miễn phí của VS
 
-### Khởi động
+## Khởi động
 
 Sau khi cài đặt, tùy vào tùy chỉnh và phiên bản, có thể bạn sẽ thấy cửa sổ Start Windows hoặc vào trực tiếp VS:
 
@@ -14,7 +14,7 @@ Sau khi cài đặt, tùy vào tùy chỉnh và phiên bản, có thể bạn s�
 hoặc sẽ thấy **Visual Studio** blank
 ![VS blank](img/03/03-vs-blank.png)
 
-### Tạo project
+## Tạo project
 
 Để tạo project, bạn vào `File > New > Project`
 
@@ -45,7 +45,7 @@ Sau khi thành công, bạn có thể bắt đầu viết và chạy chương tr
 
 ![Alt text](img/03/03-start-debugging.png)
 
-### Các Views thông dụng
+## Các Views thông dụng
 
 Views (đôi khi gọi là windows cũng được) là các tab hiển thị các chức năng tương ứng trong VS. Hầu hết các View đều nằm ở menu `View`. `Solution Explorer` là 1 trong nữa view được sử dụng nhiều nhất.
 
@@ -61,7 +61,7 @@ Ngoài ra, đôi khi bạn không tìm thấy view (hoặc bất cứ gì), bạ
 
 ![search](img/03/03-vs-search.png)
 
-### Context menu
+## Context menu
 
 > Từ giờ những từ tiếng anh kiểu thế này mình sẽ không dịch nữa, các bạn tự google hen
 
@@ -87,7 +87,7 @@ Solution có thể chứa nhiều project, ở đây bạn có thể thêm mới
 
 ![Solution context](img/03/03-solution-context.png)
 
-### Các commands thông dụng
+## Các commands thông dụng
 
 **Code search** <kbd>Ctrl</kbd> <kbd>,</kbd> (hoặc <kbd>Ctrl</kbd> <kbd>T</kbd>) là command có thể được xem là sử dụng nhiều nhất. Goto (code search) giúp bạn nhảy đến file/hàm 1 cách nhanh nhất.
 
@@ -121,7 +121,7 @@ Solution có thể chứa nhiều project, ở đây bạn có thể thêm mới
 
 ![format document](img/03/03-format-document.png)
 
-### :white_check_mark: Excercies: làm quen với phím tắt và cách hoạt động của nó
+## :white_check_mark: Excercies: làm quen với phím tắt và cách hoạt động của nó
 
 Clone repo https://github.com/oclockvn/megax
 
