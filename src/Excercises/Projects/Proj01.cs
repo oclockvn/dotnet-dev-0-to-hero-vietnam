@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercises.Items
 {
-    public class Item01 : BaseItem
+    public class Proj01 : BaseProj
     {
         public override string Description => "Write a C# Sharp program to print Hello and your name in a separate line";
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercises
 {
-    public abstract class BaseItem
+    public abstract class BaseProj
     {
         public abstract string Description { get; }
 

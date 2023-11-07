@@ -6,16 +6,16 @@ namespace Exercises
     {
         public static void Main(string[] args)
         {
-            var items = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.BaseType == typeof(BaseItem));
-            Dictionary<int, BaseItem> types = new();
+            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.BaseType == typeof(BaseProj));
+            Dictionary<int, BaseProj> projects = new();
             int i = 0;
 
-            foreach (var type in items)
+            foreach (var type in types)
             {
-                var instance = (BaseItem)Activator.CreateInstance(type);
+                var instance = (BaseProj)Activator.CreateInstance(type);
                 Console.WriteLine($"ID {i}: {instance.Description}");
 
-                types.Add(i++, instance);
+                projects.Add(i++, instance);
             }
 
             var cont = true;
@@ -27,7 +27,7 @@ namespace Exercises
                     Console.Write("Enter ID: ");
                     if (int.TryParse(Console.ReadLine(), out id))
                     {
-                        if (types.ContainsKey(id))
+                        if (projects.ContainsKey(id))
                         {
                             break;
                         }
@@ -36,18 +36,18 @@ namespace Exercises
                     }
                 } while (true);
 
-                var item = types[id];
+                var project = projects[id];
 
                 try
                 {
                     Console.WriteLine($"---------------------");
-                    Console.WriteLine(item.Description);
+                    Console.WriteLine(project.Description);
                     Console.WriteLine($"---------------------");
-                    item.Run();
+                    project.Run();
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Something happen while running solution for: {item.Description}");
+                    Console.WriteLine($"Something happen while running solution for {project.Description}: {ex.Message}");
                 }
 
                 Console.Write("Continue (y/n) ?");
