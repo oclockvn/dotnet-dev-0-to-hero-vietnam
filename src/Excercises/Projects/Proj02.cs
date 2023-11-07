@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercises.Items
 {
-    public class Item02 : BaseItem
+    public class Proj02 : BaseProj
     {
         public override string Description => "Write a C# Sharp program to print the sum of two numbers";
 
