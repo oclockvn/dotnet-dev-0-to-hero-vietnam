@@ -6,7 +6,10 @@ namespace Exercises
     {
         public static void Main(string[] args)
         {
-            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.BaseType == typeof(BaseProj));
+            var types = Assembly.GetExecutingAssembly()
+                .GetTypes()
+                .Where(t => t.BaseType == typeof(BaseProj))
+                .OrderBy(t => t.Name);
             Dictionary<int, BaseProj> projects = new();
             int i = 0;
 
@@ -50,7 +53,7 @@ namespace Exercises
                     Console.WriteLine($"Something happen while running solution for {project.Description}: {ex.Message}");
                 }
 
-                Console.Write("Continue (y/n) ?");
+                Console.Write("Continue (y/n)?: ");
                 cont = Console.ReadLine() == "y";
             } while (cont);
         }
