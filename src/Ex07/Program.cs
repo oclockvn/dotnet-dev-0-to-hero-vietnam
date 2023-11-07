@@ -4,45 +4,54 @@
     {
         static void Main(string[] args)
         {
-            var isNumber = false;
-            while(!isNumber)
-            {
-                Console.Write("Please enter number: ");
-                isNumber = int.TryParse(Console.ReadLine(), out int number);
+            var weekday = GetWeekDay();
 
-                if (number < 2 || number > 8)
+            if (weekday == 2)
+            {
+                Console.WriteLine("Monday");
+            }
+            else if (weekday == 3)
+            {
+                Console.WriteLine("Tuesday");
+            }
+            else if (weekday == 4)
+            {
+                Console.WriteLine("Wednesday");
+            }
+            else if (weekday == 5)
+            {
+                Console.WriteLine("Thursday");
+            }
+            else if (weekday == 6)
+            {
+                Console.WriteLine("Friday");
+            }
+            else if (weekday == 7)
+            {
+                Console.WriteLine("Sarturday");
+            }
+            else
+            {
+                Console.WriteLine("Sunday");
+            }
+
+        }
+
+        static int GetWeekDay()
+        {
+            while (true)
+            {
+                Console.Write("Please enter a number 2=>8: ");
+                if (int.TryParse(Console.ReadLine(), out int number))
                 {
-                    Console.WriteLine("Invalid number");
+                    if (number >= 2 && number <= 8)
+                    {
+                        return number;
+                    }
                 }
-                else if(number == 2)
-                {
-                    Console.WriteLine("Today is Monday");
-                }
-                else if (number == 3)
-                {
-                    Console.WriteLine("Today is Tuesday");
-                }
-                else if (number == 4)
-                {
-                    Console.WriteLine("Today is Wednesday");
-                }
-                else if (number == 5)
-                {
-                    Console.WriteLine("Today is Thursday");
-                }
-                else if (number == 6)
-                {
-                    Console.WriteLine("Today is Friday");
-                }
-                else if (number == 7)
-                {
-                    Console.WriteLine("Today is Sarturday");
-                }
-                else if (number == 8)
-                {
-                    Console.WriteLine("Today is Sunday");
-                }
+
             }
         }
     }
 }
+

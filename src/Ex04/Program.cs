@@ -4,14 +4,13 @@
     {
         static void Main(string[] args)
         {
-            Console.Write("Please enter input: ");
-            var input = Console.ReadLine();
 
-            bool isNumber = int.TryParse(input, out int number);
+            Console.Write("Please enter number: ");
+            bool isNumber = int.TryParse(Console.ReadLine(), out var num);
 
             if (isNumber)
             {
-                Console.WriteLine(Environment.NewLine + $"The number is : {number}");
+                Console.WriteLine(Environment.NewLine + $"The number is : {num}");
             }
             else
             {
