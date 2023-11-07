@@ -1,32 +1,31 @@
 ﻿namespace Ex08
 {
-    public class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
-            var weekday = GetWeekDay();
-
-            switch (weekday)
+            var day = GetWeekDay();
+            switch (day)
             {
                 case 2:
                     Console.WriteLine("Monday");
                     break;
-                    case 3:
+                case 3:
                     Console.WriteLine("Tuesday");
                     break;
-                    case 4:
+                case 4:
                     Console.WriteLine("Wednesday");
                     break;
-                    case 5:
+                case 5:
                     Console.WriteLine("Thursday");
                     break;
-                    case 6:
+                case 6:
                     Console.WriteLine("Friday");
                     break;
-                    case 7:
-                    Console.WriteLine("Sarturday");
+                case 7:
+                    Console.WriteLine("Saturday");
                     break;
-                    case 8:
+                default:
                     Console.WriteLine("Sunday");
                     break;
             }
@@ -36,12 +35,12 @@
         {
             while (true)
             {
-                Console.Write("Please enter number fom 2 to 8: ");
-                if (int.TryParse(Console.ReadLine(), out int number))
+                Console.Write("Enter a number (2->8): ");
+                if (int.TryParse(Console.ReadLine(), out var num))
                 {
-                    if (number >=2 && number<=8)
+                    if (2 <= num && num <= 8)
                     {
-                        return number;
+                        return num;
                     }
                 }
             }

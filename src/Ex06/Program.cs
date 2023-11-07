@@ -1,17 +1,20 @@
 ﻿namespace Ex06
 {
-    public class Program
+    internal class Program
     {
+        // Viết chương trình nhập vào 1 ký tự bất kỳ, lặp lại đến khi nào người dùng nhập vào 1 số bằng 2 cách:
         static void Main(string[] args)
         {
-            var isNumber = false;
-            var number = 0;
-            while (!isNumber)
-                {
-                    Console.Write("Please enter number: ");
-                    isNumber = int.TryParse(Console.ReadLine(), out number);
-                }
-            Console.WriteLine($"Your number is {number}");
+            // we've already know how to do it
+            var valid = false;
+            var num = 0;
+            while (!valid)
+            {
+                Console.Write("Enter a number: ");
+                valid = int.TryParse(Console.ReadLine(), out num );
+            }
+
+            Console.WriteLine($"Your number is: {num}");
         }
     }
 }

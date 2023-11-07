@@ -1,36 +1,33 @@
-﻿using System.Security.Claims;
-
-namespace Ex10
+﻿namespace Ex10
 {
-    public class Program
+    internal class Program
     {
+        // Viết chương trình nhập vào 1 số, tính tổng các số liên tiếp từ 0
         static void Main(string[] args)
         {
-            var invalid = false;
-            var num = 0;
-
-            while (!invalid)
-            {
-                Console.Write("Please enter a number: ");
-                invalid = int.TryParse(Console.ReadLine(), out num);
-            }
-
+            var number = GetNumber();
             var sum = 0;
-            string s = "";
-            for (int i = 1; i <= num; i++)
+            var text = "";
+
+            for (int i = 1; i <= number; i++)
             {
                 sum += i;
-                if (i != num)
-                {
-                s += $"{i} + ";
-                }
-                else
-                {
-                    s += $"{i}";
-                }
+                text += i < number ? $"{i} + " : $"{i}";
             }
 
-            Console.WriteLine($"{s} = {sum}");
+            Console.WriteLine($"{text} = {sum}");
+        }
+
+        static int GetNumber()
+        {
+            while (true)
+            {
+                Console.Write("Enter a number: ");
+                if (int.TryParse(Console.ReadLine(), out var num))
+                {
+                    return num;
+                }
+            }
         }
     }
 }

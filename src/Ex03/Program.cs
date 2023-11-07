@@ -1,28 +1,26 @@
 ﻿namespace Ex03
 {
-    public class Program
+    internal class Program
     {
+        // write a program to sum 2 numbers from user input
         static void Main(string[] args)
         {
-            var firstNum = GetNumber("Please enter the first number: ");
+            var firstNumber = GetNumber("Enter first number: ");
+            var secondNumber = GetNumber("Enter second number: ");
+            var sum = firstNumber + secondNumber;
 
-            var secondNum = GetNumber("Please enter the second number: ");
-
-            var result = firstNum + secondNum;
-
-            Console.WriteLine($"The sum of two number is : {result}");
-
-            
+            Console.WriteLine($"{firstNumber} + {secondNumber} = {sum}");
         }
 
+        // extract a method to avoid duplicate code
         static int GetNumber(string message)
         {
-            bool invalid = false;
-            var num = 0;
-            while (!invalid)
+            var valid = false;
+            int num = 0;
+            while (!valid)
             {
                 Console.Write(message);
-                invalid = int.TryParse(Console.ReadLine(), out num);
+                valid = int.TryParse(Console.ReadLine(), out num);
             }
 
             return num;

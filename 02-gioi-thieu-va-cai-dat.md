@@ -1,6 +1,6 @@
 # Giới thiệu tổng quan | Trở thành .NET Developer - từ 0 tới hero | 02
 
-### Về ngôn ngữ C#
+## Về ngôn ngữ C#
 
 C# (đọc là See-Sharp | "si sáp") là ngôn ngữ hiện đại, hướng đối tượng và "type-safe" (kiểu an toàn*), được phát triển bởi Microsoft...
 
@@ -8,7 +8,7 @@ C# (đọc là See-Sharp | "si sáp") là ngôn ngữ hiện đại, hướng đ
 
 Khoan khoan, dừng lại chừng 2s. Nếu tiếp tục viết lại những thứ đã có thì các bạn nên vào [link chính chủ đây](https://learn.microsoft.com/vi-vn/dotnet/csharp/tour-of-csharp/) đọc cho đầy đủ. Trong series này mình sẽ cố gắng giải thích những gì mà mình nghĩ là nó đơn giản dễ hiểu hơn.
 
-### Tại sao mình (mình là chính các bạn đó) lại chọn C#?
+## Tại sao mình (mình là chính các bạn đó) lại chọn C#?
 
 Nếu bạn đang tự hỏi câu này thì bạn có thể rơi vào các trường hợp sau:
 - Bạn đang tìm 1 cái gì đó mới để học và đang so sánh các ngôn ngữ để xem nên học cái nào
@@ -22,14 +22,14 @@ Nếu bạn đang tự hỏi câu này thì bạn có thể rơi vào các trư�
 
 Phần giới thiệu chỉ cần tới đây thôi.
 
-### .NET Framework và .NET Core, giờ chỉ còn là .NET
+## .NET Framework và .NET Core, giờ chỉ còn là .NET
 
 .NET Framework là phiên bản Windows Only (chỉ chạy trên Windows), trải qua các [versions](https://en.wikipedia.org/wiki/.NET_Framework_version_history) khác nhau cho tới v4.8 thì dừng lại, sau đó .NET Core được phát hành (2014), có thể chạy cross playforms (Windows, Mac và Linux). Kể từ sau .NET Core 3.1 thì chỉ còn gọi là .NET (.NET 5, 6, 7, 8). Do đó khi học và làm việc, 
 các bạn phải chú ý version (phiên bản) mà mình đang sử dụng.
 
 Đọc nhiều hơn ở [đây](https://learn.microsoft.com/en-us/dotnet/core/introduction#net-history)
 
-### Cài đặt
+## Cài đặt
 
 Trong series này mình sẽ dùng .NET 7 (có thể là 8), do đó mình sẽ download .NET SDK 7: https://dotnet.microsoft.com/en-us/download (trang này sẽ hiển thị SDK [LTS](https://en.wikipedia.org/wiki/Long-term_support), nên có thể khi bạn mở ra thì nó đã là .NET version khác)
 

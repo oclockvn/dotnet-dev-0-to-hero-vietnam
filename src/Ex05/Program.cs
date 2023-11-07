@@ -1,19 +1,25 @@
 ﻿namespace Ex05
 {
-    public class Program
+    internal class Program
     {
+        // Viết chương trình nhập vào năm sinh, in ra số tuổi
         static void Main(string[] args)
         {
-            bool invalid = false;
-            var year = 0;
-            while (!invalid)
-            {
-            Console.Write("Please enter your birth year: ");
-            invalid = int.TryParse(Console.ReadLine(), out year);
-            }
+            var birthYear = GetNumber("Enter your birth year: ");
+            var age = DateTime.Now.Year - birthYear;
+            Console.WriteLine($"You are {age} years old");
+        }
 
-            var age = DateTime.Now.Year - year;
-            Console.WriteLine(Environment.NewLine + $"Your age is: {age}");
+        static int GetNumber(string msg)
+        {
+            while (true)
+            {
+                Console.Write(msg);
+                if (int.TryParse(Console.ReadLine(), out var number))
+                {
+                    return number;
+                }
+            }
         }
     }
 }

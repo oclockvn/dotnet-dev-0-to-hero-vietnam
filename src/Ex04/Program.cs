@@ -1,20 +1,19 @@
 ﻿namespace Ex04
 {
-    public class Program
+    internal class Program
     {
+        // Viết chương trình nhập vào 1 ký tự bất kỳ, in ra "Bạn đã nhập số" nếu ký tự đó là số, "Bạn đã nhập chuỗi" nếu ký tự không phải là số
         static void Main(string[] args)
         {
-
-            Console.Write("Please enter number: ");
-            bool isNumber = int.TryParse(Console.ReadLine(), out var num);
-
+            Console.Write("Enter a character: ");
+            var isNumber = int.TryParse(Console.ReadLine(), out var _); // discard output as we don't need it
             if (isNumber)
             {
-                Console.WriteLine(Environment.NewLine + $"The number is : {num}");
+                Console.WriteLine("This is a number");
             }
             else
             {
-                Console.WriteLine(Environment.NewLine + "The input is not a number");
+                Console.WriteLine("This is not a number");
             }
         }
     }
