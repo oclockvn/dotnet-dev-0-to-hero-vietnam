@@ -4,8 +4,13 @@
     {
         static void Main(string[] args)
         {
+            bool invalid = false;
+            var year = 0;
+            while (!invalid)
+            {
             Console.Write("Please enter your birth year: ");
-            var year = int.Parse(Console.ReadLine());
+            invalid = int.TryParse(Console.ReadLine(), out year);
+            }
 
             var age = DateTime.Now.Year - year;
             Console.WriteLine(Environment.NewLine + $"Your age is: {age}");

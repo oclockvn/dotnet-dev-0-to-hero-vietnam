@@ -4,12 +4,15 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please enter number: ");
+            bool invalid = false;
+            var num = 0;
+            while (!invalid)
+            {
+                Console.WriteLine("Please enter number: ");
+                invalid = int.TryParse(Console.ReadLine(), out num);
+            }
 
-            var num = int.Parse(Console.ReadLine());
-            var pow = Math.Pow(num, 2);
-
-            Console.WriteLine("The Result is: " + pow);
+            Console.WriteLine($"{num}^2 = {Math.Pow(num, 2)}");
         }
     }
 }

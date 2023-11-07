@@ -4,13 +4,28 @@
     {
         static void Main(string[] args)
         {
-            Console.Write("Please enter the first number: ");
-            var firstNum = int.Parse(Console.ReadLine());
+            var firstNum = GetNumber("Please enter the first number: ");
 
-            Console.Write("Please enter the second number: ");
-            var secondNum = int.Parse(Console.ReadLine());
+            var secondNum = GetNumber("Please enter the second number: ");
 
-            Console.WriteLine($"The sum of two number is : {firstNum + secondNum}");
+            var result = firstNum + secondNum;
+
+            Console.WriteLine($"The sum of two number is : {result}");
+
+            
+        }
+
+        static int GetNumber(string message)
+        {
+            bool invalid = false;
+            var num = 0;
+            while (!invalid)
+            {
+                Console.Write(message);
+                invalid = int.TryParse(Console.ReadLine(), out num);
+            }
+
+            return num;
         }
     }
 }
