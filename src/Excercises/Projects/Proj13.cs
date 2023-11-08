@@ -14,11 +14,11 @@ namespace Exercises.Projects
         {
             var number = GetNumber("Please enter a number: ");
 
-            Console.WriteLine("{}{}{}", number);
-            Console.WriteLine("{} {}", number);
-            Console.WriteLine("{} {}", number);
-            Console.WriteLine("{} {}", number);
-            Console.WriteLine("{}{}{}", number);
+            Console.WriteLine("{0}{0}{0}", number);
+            Console.WriteLine("{0} {0}", number);
+            Console.WriteLine("{0} {0}", number);
+            Console.WriteLine("{0} {0}", number);
+            Console.WriteLine("{0}{0}{0}", number);
         }
 
         public int GetNumber(string message)
