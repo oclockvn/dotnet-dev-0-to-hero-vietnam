@@ -13,9 +13,13 @@
                 var newString = RemoveCharacter(str, num);
                 Console.WriteLine(newString);
             }
+            else if (str.Length == 1)
+            {
+                Console.WriteLine("Nothing appears!");
+            }
             else
             {
-                Console.WriteLine("Cannot perform this requiration.");
+                Console.WriteLine("Cannot perform this requirement.");
             }
         }
 
