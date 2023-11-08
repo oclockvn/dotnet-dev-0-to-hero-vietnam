@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Exercises.Projects
+﻿namespace Exercises.Projects
 {
     public class Proj16 : BaseProj
     {
@@ -22,7 +16,7 @@ namespace Exercises.Projects
             }
             else if (str.Length == 2)
             {
-                Console.WriteLine($"The new string is {str[1] + str[0]}");
+                Console.WriteLine($"The new string is {str[1].ToString() + str[0].ToString()}");
             }
             else if (str.Length > 2)
             {
