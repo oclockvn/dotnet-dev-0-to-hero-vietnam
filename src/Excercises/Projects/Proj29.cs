@@ -10,14 +10,13 @@
             var fileInfo = new FileInfo(path);
             var size = fileInfo.Length;
 
-            if (fileInfo.Exists)
-            {
-                Console.WriteLine($"The size of file in bytes is : {size}");
-            }
-            else
+            if (!fileInfo.Exists)
             {
                 Console.WriteLine("Error: File not found.");
             }
+
+            Console.WriteLine($"The size of file in bytes is : {size}");
+
         }
 
         public string GetPath(string message)
