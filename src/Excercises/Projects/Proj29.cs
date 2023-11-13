@@ -16,7 +16,6 @@
             }
 
             Console.WriteLine($"The size of file in bytes is : {size}");
-
         }
 
         public string GetPath(string message)
