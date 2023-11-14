@@ -12,10 +12,26 @@ namespace Exercises.Projects
 
         public override void Run()
         {
-            Console.Write("Please enter a string: ");
-            var str = Console.ReadLine();
+            var str = IsSpecifiedWord("Please enter a string: ");
+            Console.WriteLine(str);
+        }
 
+        public bool IsSpecifiedWord(string message)
+        {
+            Console.WriteLine(message);
+            var str = Console.ReadLine().Split(' ');
 
+            if (str.Length < 1)
+            {
+                return false;
+            }
+
+            if (str[0].ToLower() == "hello")
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
