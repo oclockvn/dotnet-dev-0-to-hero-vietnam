@@ -9,7 +9,16 @@ using TodoList.Entities;
 
 namespace TodoList.Services
 {
-    public class TodoService
+    interface ITodoService
+    {
+        Task<List<TodoDTO>> GetTodosAsync();
+        Task<TodoDTO?> GetTodoAsync(int id);
+        Task<TodoDTO> AddTaskAsync(string name);
+        Task CompleteAsync(int id);
+        Task DeleteTaskAsync(int id);
+    }
+
+    public class TodoService : ITodoService
     {
         private ApplicationDbContext applicationDbContext = new();
 
@@ -26,17 +35,59 @@ namespace TodoList.Services
             return todos;
         }
 
-        public async Task<bool> AddTaskAsync(string name)
+        public async Task<TodoDTO?> GetTodoAsync(int id)
         {
-            applicationDbContext.Todos.Add(new Todo() { Name = name, Completed = false });
-            var count = await applicationDbContext.SaveChangesAsync();
-
-            return count > 0;
+            return await applicationDbContext.Todos
+                .Where(x => x.Id == id)
+                .Select(x => new TodoDTO() 
+                { 
+                    Id = x.Id,
+                    Name = x.Name,
+                    Completed = x.Completed,
+                }).FirstOrDefaultAsync();
         }
 
-        public async Task CompleteAsync(int Id)
+        public async Task<TodoDTO> AddTaskAsync(string name)
         {
+            var todo = new Todo();
+            todo.Name = name;
+            todo.Completed = false;
 
+            applicationDbContext.Todos.Add(todo);
+            var count = await applicationDbContext.SaveChangesAsync();
+
+            if (count == 0)
+            {
+                throw new Exception("Cannot save changes.");
+            }
+
+            return new TodoDTO
+            {
+                Id=todo.Id,
+                Name = todo.Name,
+                Completed = todo.Completed,
+            };
+        }
+
+        public async Task CompleteAsync(int id)
+        {
+           var todo = await applicationDbContext.Todos.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (todo == null)
+            {
+                throw new Exception($"No Todo found by Id {id}");
+            }
+
+            todo.Completed = true;
+            await applicationDbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteTaskAsync(int id)
+        {
+            var todo= await applicationDbContext.Todos.FirstOrDefaultAsync( x => x.Id == id);
+
+            applicationDbContext.Todos.Remove(todo);
+            await applicationDbContext.SaveChangesAsync();
         }
     }
 }

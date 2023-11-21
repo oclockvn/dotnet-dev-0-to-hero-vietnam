@@ -1,4 +1,5 @@
 ﻿using System.Threading.Channels;
+using TodoList.DTOs;
 using TodoList.Services;
 
 namespace TodoList
@@ -34,13 +35,13 @@ namespace TodoList
 
         static async Task AddTodoAsync()
         {
-            TodoService service = new TodoService();
+            ITodoService service = new TodoService();
             await Console.Out.WriteLineAsync("Enter your todo: ");
             var name = Console.ReadLine();
 
-            var isSuccess = await service.AddTaskAsync(name);
+            var result = await service.AddTaskAsync(name);
 
-            if (isSuccess)
+            if (result?.Id > 0)
             {
                 await Console.Out.WriteLineAsync("Add successfully.");
             }
@@ -52,7 +53,7 @@ namespace TodoList
 
         static async Task ShowTodoAsync()
         {
-            TodoService service = new TodoService();
+            ITodoService service = new TodoService();
             var todos = await service.GetTodosAsync();
 
             foreach (var todo in todos)
@@ -60,6 +61,15 @@ namespace TodoList
                 var status = todo.Completed ? "[Done]" : "[Todo]";
                 Console.WriteLine($"{status}-{todo.Name}");
             }
+        }
+
+        static async Task TodoCompleteAsync(int id)
+        {
+            ITodoService service = new TodoService();
+            await Console.Out.WriteLineAsync("Please enter id: ");
+            var n = Console.ReadLine();
+
+            await service.CompleteAsync(int.Parse(n));
         }
 
         static int GetNumber(string message)
