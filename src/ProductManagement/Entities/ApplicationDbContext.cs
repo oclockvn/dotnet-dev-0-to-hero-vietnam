@@ -14,7 +14,7 @@ namespace ProductManagement.Core.Entities
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("server=.\\SQLExpress;database=Product;Trusted_Connection=True;TrustServerCertificate=true");
+            optionsBuilder.UseSqlServer("server=.\\SQLExpress;database=ProductMangement;Trusted_Connection=True;TrustServerCertificate=true");
         }
     }
 }

@@ -1,7 +1,11 @@
+using ProductManagement.Core.Services;
+
 namespace ProductMangement
 {
     public partial class Form1 : Form
     {
+        private ProductService productService = new();
+
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +34,12 @@ namespace ProductMangement
         private void lvProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private async void Form1_Load(object sender, EventArgs e)
+        {
+            var p = await productService.GetProductsAsync();
+            
         }
     }
 }
