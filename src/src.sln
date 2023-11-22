@@ -31,9 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercises", "Excercises\Exe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoList", "TodoList\TodoList.csproj", "{305ECF7B-B38A-432C-A33E-4DBA4C1588CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManagement", "ProductManagement\ProductManagement.csproj", "{694F25E6-7E69-4142-A77B-F4A02A110E9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductManagement.Core", "ProductManagement\ProductManagement.Core.csproj", "{694F25E6-7E69-4142-A77B-F4A02A110E9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductMangement", "ProductMangement\ProductMangement.csproj", "{6F0B3A8D-E3F2-4485-B20C-0E4B65F7A2FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductManagement", "ProductMangement\ProductManagement.csproj", "{6F0B3A8D-E3F2-4485-B20C-0E4B65F7A2FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

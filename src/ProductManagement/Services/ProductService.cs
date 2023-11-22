@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProductManagement.Entities;
-using ProductManagement.Models;
+using ProductManagement.Core.Entities;
+using ProductManagement.Core.Models;
 
-namespace ProductManagement.Services
+namespace ProductManagement.Core.Services
 {
     interface IProductService
     {

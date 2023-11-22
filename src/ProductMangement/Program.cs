@@ -1,4 +1,6 @@
-namespace ProductMangement
+using ProductMangement;
+
+namespace ProductManagement
 {
     internal static class Program
     {
