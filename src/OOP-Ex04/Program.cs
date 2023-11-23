@@ -4,7 +4,9 @@ public class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        var A = new Manager();
+        A.Salary = 1;
+        Console.WriteLine($"{A.ManagerSalary()}");
     }
 }
 
@@ -17,15 +19,24 @@ public class Employee
 
 public class Manager : Employee
 {
-    
+    public double ManagerSalary()
+    {
+        return Salary * 3;
+    }
 }
 
 public class Engineer : Employee
 {
-
+    public double EngineSalary()
+    {
+        return Salary * 2;
+    }
 }
 
 public class Salesperson : Employee
 {
-
+    public double SalespersonSalary()
+    {
+        return Salary;
+    }
 }
