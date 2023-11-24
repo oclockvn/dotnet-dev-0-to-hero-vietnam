@@ -10,7 +10,6 @@ public class Program
         a.Deposit(20);
         a.Withdraw(5);
         Console.WriteLine(a.Balance);
-        
     }
 }
 
