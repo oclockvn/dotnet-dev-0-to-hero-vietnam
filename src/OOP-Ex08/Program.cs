@@ -36,7 +36,7 @@ public class Program
         };
 
         sales.CalculateSalary();
-        engineer.DisplayDetail();
+        sales.DisplayDetail();
 
         var interm = new Interm()
         {
@@ -75,6 +75,7 @@ public class Manager : Employee
         Console.WriteLine($"Department: {Department}");
         Console.WriteLine($"Salary: {Salary}");
         Console.WriteLine($"Team's name: {Team}");
+        Console.WriteLine();
 
     }
 }
@@ -95,6 +96,7 @@ public class Engineer : Employee
         Console.WriteLine($"Department: {Department}");
         Console.WriteLine($"Salary: {Salary}");
         Console.WriteLine($"Project's name: {Project}");
+        Console.WriteLine();
     }
 }
 
@@ -114,6 +116,7 @@ public class Salesperson : Employee
         Console.WriteLine($"Department: {Department}");
         Console.WriteLine($"Salary: {Salary}");
         Console.WriteLine($"Sale's target: {SalesTarget}");
+        Console.WriteLine();
 
     }
 }
