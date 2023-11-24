@@ -6,10 +6,9 @@ public class Program
 {
     static void Main(string[] args)
     {
-        Account a = new(10);
-        a.Deposit(20);
-        a.Withdraw(5);
-        Console.WriteLine(a.Balance);
+        ATM atm = new ATM();
+        atm.CreateAccount("John", "deposit", 200);
+     
     }
 }
 
