@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP-Ex13-Product", "OOP-Ex1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP-Ex14-Counter", "OOP-Ex14-Counter\OOP-Ex14-Counter.csproj", "{689B3E7B-2978-45A3-AA32-ECA56F2E1150}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP-Ex15-Dept", "OOP-Ex15-Dept\OOP-Ex15-Dept.csproj", "{F5B5C209-C2C6-4F0E-81A3-4C21A14E6A38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -189,6 +191,10 @@ Global
 		{689B3E7B-2978-45A3-AA32-ECA56F2E1150}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{689B3E7B-2978-45A3-AA32-ECA56F2E1150}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{689B3E7B-2978-45A3-AA32-ECA56F2E1150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B5C209-C2C6-4F0E-81A3-4C21A14E6A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B5C209-C2C6-4F0E-81A3-4C21A14E6A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B5C209-C2C6-4F0E-81A3-4C21A14E6A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B5C209-C2C6-4F0E-81A3-4C21A14E6A38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
