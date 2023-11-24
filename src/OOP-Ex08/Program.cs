@@ -11,7 +11,7 @@ public class Program
         {
             Name = "John",
             Department = "IT",
-            Team = "dotnet dev"
+            Team = "dotnet dev",
         };
 
         manager.CalculateSalary();
