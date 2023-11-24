@@ -8,7 +8,9 @@ public class Program
     {
         ATM atm = new ATM();
         atm.CreateAccount("John", "deposit", 200);
-     
+
+        atm.AccountTransaction("Alice");
+        atm.AccountTransaction("John");
     }
 }
 
@@ -58,14 +60,16 @@ public class ATM
         accounts.Add(newAcc);
     }
 
-    public void SelectAccount(string holdername)
+    public void AccountTransaction(string holderName)
     {
-        var selectAcc = accounts.Find(x => x.HolderName == holdername);
-        AccountTransaction(selectAcc);
-    }
+        var acc = accounts.Where(x => x.HolderName.Equals(holderName)).FirstOrDefault();
 
-    public void AccountTransaction(Account selectAcc)
-    {
+        if (acc == null)
+        {
+            Console.WriteLine("Account doesn't exist.");
+            return;
+        }
+
         int option;
         do
         {
@@ -81,15 +85,15 @@ public class ATM
                 case 1:
                     Console.WriteLine("Enter deposit amount: ");
                     var depositAmount = double.Parse(Console.ReadLine());
-                    selectAcc.Deposit(depositAmount);
+                    acc.Deposit(depositAmount);
                     break;
                 case 2:
                     Console.WriteLine("Enter withdraw amount: ");
                     var withdrawAmount = double.Parse(Console.ReadLine());
-                    selectAcc.Withdraw(withdrawAmount);
+                    acc.Withdraw(withdrawAmount);
                     break;
                 case 3:
-                    selectAcc.CheckBalance();
+                    acc.CheckBalance();
                     break;
             }
 
