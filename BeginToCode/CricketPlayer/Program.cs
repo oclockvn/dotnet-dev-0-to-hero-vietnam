@@ -39,7 +39,6 @@
                 players[i] = player;
             }
 
-            //todo: bubble sort
             for (int i = 0; i < players.Length - 1; i++)
             {
                 for (int j = 0; j < players.Length - 1 - i; j++)
