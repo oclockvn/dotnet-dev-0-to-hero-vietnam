@@ -23,13 +23,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Struct100Student", "Struct1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CricketPlayer", "CricketPlayer\CricketPlayer.csproj", "{09186A19-6474-469E-9786-03E1B1416D63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "w17_Method_Library", "w17_Method_Library\w17_Method_Library.csproj", "{E9C09AF6-B1BE-4FE6-B204-E0927C88B61B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "w17_Method_Library", "w17_Method_Library\w17_Method_Library.csproj", "{E9C09AF6-B1BE-4FE6-B204-E0927C88B61B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayOffRequest", "DayOffRequest\DayOffRequest.csproj", "{B9610579-E51D-4CD7-86BD-BFD6717971E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DayOffRequest", "DayOffRequest\DayOffRequest.csproj", "{B9610579-E51D-4CD7-86BD-BFD6717971E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidthdrawMoneyATM", "WidthdrawMoneyATM\WidthdrawMoneyATM.csproj", "{0F41DFD4-5F42-4B09-89A2-80113CB7206E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WidthdrawMoneyATM", "WidthdrawMoneyATM\WidthdrawMoneyATM.csproj", "{0F41DFD4-5F42-4B09-89A2-80113CB7206E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Register", "Register\Register.csproj", "{A89E155D-BE30-4340-9213-E36487DD32C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Register", "Register\Register.csproj", "{A89E155D-BE30-4340-9213-E36487DD32C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadFile", "ReadFile\ReadFile.csproj", "{B20BFCFF-5314-496D-9D16-C06B376780C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{A89E155D-BE30-4340-9213-E36487DD32C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A89E155D-BE30-4340-9213-E36487DD32C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A89E155D-BE30-4340-9213-E36487DD32C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B20BFCFF-5314-496D-9D16-C06B376780C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B20BFCFF-5314-496D-9D16-C06B376780C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B20BFCFF-5314-496D-9D16-C06B376780C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B20BFCFF-5314-496D-9D16-C06B376780C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
