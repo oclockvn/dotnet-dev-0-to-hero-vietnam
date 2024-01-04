@@ -15,7 +15,7 @@ namespace Email
                     while (!reader.EndOfStream)
                     {
                         string line = reader.ReadLine();
-                        if (line != null))
+                        if (line != null)
                         {
                             string[] infos = line.Split(',');
 
