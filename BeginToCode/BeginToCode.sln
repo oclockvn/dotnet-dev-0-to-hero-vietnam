@@ -31,11 +31,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WidthdrawMoneyATM", "Widthd
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Register", "Register\Register.csproj", "{A89E155D-BE30-4340-9213-E36487DD32C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadFile", "ReadFile\ReadFile.csproj", "{B20BFCFF-5314-496D-9D16-C06B376780C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadFile", "ReadFile\ReadFile.csproj", "{B20BFCFF-5314-496D-9D16-C06B376780C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Email", "Email\Email.csproj", "{FFF53889-475F-4FC3-908A-C3BF0B9B70E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Email", "Email\Email.csproj", "{FFF53889-475F-4FC3-908A-C3BF0B9B70E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DownloadFile", "DownloadFile\DownloadFile.csproj", "{B18889ED-6629-4403-86C4-B5105C7E775E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DownloadFile", "DownloadFile\DownloadFile.csproj", "{B18889ED-6629-4403-86C4-B5105C7E775E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchRepo", "SearchRepo\SearchRepo.csproj", "{C61DE41B-0CA4-4E95-ABBF-3568687C6D7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccounts", "BankAccounts\BankAccounts.csproj", "{E94C22B3-9F92-4955-A68B-168B4827E46B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +115,14 @@ Global
 		{B18889ED-6629-4403-86C4-B5105C7E775E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B18889ED-6629-4403-86C4-B5105C7E775E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B18889ED-6629-4403-86C4-B5105C7E775E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C61DE41B-0CA4-4E95-ABBF-3568687C6D7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C61DE41B-0CA4-4E95-ABBF-3568687C6D7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C61DE41B-0CA4-4E95-ABBF-3568687C6D7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C61DE41B-0CA4-4E95-ABBF-3568687C6D7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E94C22B3-9F92-4955-A68B-168B4827E46B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E94C22B3-9F92-4955-A68B-168B4827E46B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E94C22B3-9F92-4955-A68B-168B4827E46B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E94C22B3-9F92-4955-A68B-168B4827E46B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
