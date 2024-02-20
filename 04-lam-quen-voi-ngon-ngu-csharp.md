@@ -1,4 +1,4 @@
-# Làm quen với ngôn ngữ C# | Trở thành .NET Developer - từ 0 tới hero | 04
+# Chap 04: Làm quen với ngôn ngữ C# | Trở thành .NET Developer - từ 0 tới hero
 
 Một điểm thú vị trong series [C# programming guide](https://learn.microsoft.com/vi-vn/dotnet/csharp/programming-guide/#:~:text=Most%20of%20this%20section%20assumes%20that%20you%20already%20know%20something%20about%20C%23%20and%20general%20programming%20concepts) là họ đã "giả sử" là bạn cần phải biết cơ bản về lập trình. Điều này có thể đơn giản nếu bạn đã biết lập trình hoặc 1 ngôn ngữ lập trình nào đó trước, tuy nhiên nếu bạn là 1 tờ giấy trắng thì đó là cả 1 quá trình dài. Trong series này mình đã nói là bạn không cần (kiến thức nền tảng) gì cả, vậy thì bạn sẽ bắt đầu như thế nào?
 
