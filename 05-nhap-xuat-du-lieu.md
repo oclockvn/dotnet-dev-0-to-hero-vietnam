@@ -1,4 +1,4 @@
-# Nhập xuất dữ liệu | Trở thành .NET Developer - từ 0 tới hero | 04
+# Chap 05: Nhập xuất dữ liệu | Trở thành .NET Developer - từ 0 tới hero
 
 ### Mục tiêu bài học
 - [x] Biết cách xuất dữ liệu ra màn hình dòng lệnh (write to console)
