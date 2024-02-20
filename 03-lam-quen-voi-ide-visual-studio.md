@@ -1,4 +1,4 @@
-# Làm quen với Visual Studio | Trở thành .NET Developer - từ 0 tới hero | 03
+# Chap 03: Làm quen với Visual Studio | Trở thành .NET Developer - từ 0 tới hero
 
 Visual Studio (VS) là IDE mạnh mẽ và phổ biến cho những LTV (Lập trình viên) .NET. Tuy bạn có thể sử dụng nhiều phần mềm khác nhau (VSCode/Rider), hoặc thậm chí kết hợp giữa CLI và bất kể chương trình nào có thể soạn thảo code được, nhưng VS vẫn luôn là lựa chọn hàng đầu của nhiều người bởi sự miễn phí và những tính năng mà nó mang lại.
 
