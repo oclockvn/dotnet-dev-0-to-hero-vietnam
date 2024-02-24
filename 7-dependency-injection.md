@@ -1,8 +1,6 @@
 # Chap 07 Dependency Injection | Trở thành .NET Developer - từ 0 tới hero
 
-> Series .net dev 02hero là 1 series đặc biệt được mình viết ra nhắm mục đích training cá nhân, các nội dung trong series này đều hoàn toàn có thể được tìm thấy rất nhiều trên internet, lý do mình viết lại những thứ có thể được tìm thấy ở internet là bởi tính
-> mục đích không dành cho người có kiến thức nền tảng, và đồng thời cách diễn đạt của mình sẽ có đôi chút khác biệt. Đây cũng là 1 bài viết đặc biệt vì nó thuộc về phần nâng cao, nhưng do tính chất
-> training nên mình viết nó trước. Những ai chưa hiểu có thể bỏ qua hoặc xem lại bài này sau.
+> Series .net dev 02hero là 1 series đặc biệt được mình viết ra nhắm mục đích training cá nhân, các nội dung trong series này đều hoàn toàn có thể được tìm thấy rất nhiều trên internet, lý do mình viết lại những thứ có thể được tìm thấy ở internet là bởi mục đích không dành cho người có kiến thức nền tảng, và đồng thời cũng muốn cách diễn đạt theo lời văn của mình. Đây cũng là 1 bài viết đặc biệt vì nó thuộc về phần nâng cao, nhưng do tính chất training nên mình viết nó trước. Những ai chưa hiểu có thể bỏ qua hoặc xem lại bài này sau.
 
 ### Hiểu về ý tưởng của Dependency Injection (DI)
 
@@ -40,11 +38,15 @@ Trả lời:
 > Flexibility and Reusability: By decoupling the classes, the code becomes more flexible and reusable.
 > Remember, the main idea behind Dependency Injection is that it allows your code to be decoupled, reusable, and easier to test.
 
-Có thể bạn cũng hình dung ra "sơ sơ" rồi, nhưng thực tế áp dụng ra sao thì bạn còn đang hoang mang lắm. Mình tiếp tục với ví dụ dưới đây.
+Có thể bạn cũng hình dung ra "sơ sơ" rồi, nhưng thực tế áp dụng ra sao thì có thể bạn còn đang hoang mang lắm. Mình sẽ đi từng thành phần để hiểu hết về DI.
 
 ### 1. Dependency
 
-Bạn là nhà máy lắp ráp và sản xuất oto AAA. Tuy nhiên bạn không tự mình làm hết các bộ phận của chiếc xe mà thuê các bên gia công các thành phần sau đó lắp ráp chúng lại thành oto hoàn chỉnh. 
+> A dependency is an object that another object depends on.
+> -- [.NET dependency injection](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection#:~:text=A%20dependency%20is%20an%20object%20that%20another%20object%20depends%20on.)
+
+Bạn là nhà máy lắp ráp và sản xuất oto AAA. Tuy nhiên bạn không tự mình làm hết các bộ phận của chiếc xe mà thuê các bên gia công các thành phần sau đó lắp ráp chúng lại thành oto hoàn chỉnh.
+
 Việc này được mô phỏng "vui" như sau:
 
 ```
@@ -60,36 +62,62 @@ sản xuất xe AAA
 hoàn thành xe
 ```
 
-có thể thấy để xây dựng 1 chiếc oto hoàn chỉnh, nhà máy phụ thuộc vào rất nhiều những manufacture khác. Hay nói cách khác, nhà máy sản xuất AAA bị "phụ thuộc" vào manufacture SSS, CCC, hay nói cách khác,
+có thể thấy để xây dựng 1 chiếc oto hoàn chỉnh, nhà máy phụ thuộc vào rất nhiều những manufacture khác. Ta nói nhà máy sản xuất AAA bị "phụ thuộc" vào manufacture SSS, CCC, hay nói cách khác,
 SSS, CCC là những thành phần phụ thuộc (dependency) của AAA.
 
 Nếu mô phỏng quá trình này bằng C# ta sẽ có:
 
 ```cs
-class FrameFactory
+// Frame, Engine là những class đại diện cho khung sườn và động cơ, được giả sử là đã có sẵn
+public class Car
 {
-  Frame MakeFrame();
+  public Frame MainFrame;
+  public Engine MainEngine;
 }
 
-class EngineFactory
-{
-  Engine MakeEngine();
+public class FrameFactory {
+  public Frame MakeFrame();
 }
 
-class Car
-{
-  Frame MainFrame;
-  Engine MainEngine;
+public class EngineFactory {
+  public Engine MakeEngine();
 }
 
-class CarFactory
-{
-  Car MakeCar()
-  {
-    
+public class CarFactory {
+  public Car MakeCar() {
+    var frame = frameFactory.MakeFrame(); // create frame
+    var engine = engineFactory.MakeEngine(); // create engine
+
+    // make the car
+    return new Car
+    {
+      Frame = frame,
+      Engine = engine
+    };
   }
 } 
 ```
-  
+
+ở ví dụ trên, `frameFactory` và `engineFactory` là 2 dependencies của class `CarFactory`. Ở đây mình đang "giả sử" là `frameFactory` và `engineFactory` đã được khởi tạo ở trước đó.
+
+Bình thường thì dependencies có thể được tạo ra ở bất cứ đâu bằng constructor của nó, ví dụ như sau:
+
+```cs
+public class CarFactory
+{
+  // initialize dependencies
+  private FrameFactory frameFactory = new FrameFactory();
+  private EngineFactory engineFactory = new EngineFactory();
+
+  public Car MakeCar()
+  {
+    var frame = frameFactory.MakeFrame();
+    var engine = engineFactory.MakeEngine();
+
+    return new Car {...};
+  }
+} 
+```
+
 
 
