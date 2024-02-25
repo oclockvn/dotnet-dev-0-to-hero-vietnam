@@ -251,13 +251,11 @@ hay nói 1 cách dễ hiểu hơn:
 > [!IMPORTANT]
 > Dependency injection là 1 kỹ thuật, trong đó 1 đối tượng không tự quản lý các dependency của nó mà được truyền vào từ bên ngoài.
 
-Các thành phần:
+Các thành phần trong DI:
 
 - Services: chính là các class/interface trong C#. Trong ngữ cảnh DI, các đối tượng (class/interface) được xem như là các services.
 - `ServiceCollection`: là class chứa các services đã được đăng ký. Bạn cần "đăng ký" (thêm) tất cả các services vào `ServiceCollection` trước khi sử dụng.
 - `ServiceProvider`: là class có nhiệm vụ "cung cấp" các dependency cho 1 service khác.
-
-#### Setup DI
 
 Lấy ví dụ chương trình sau:
 
@@ -310,7 +308,10 @@ Kết quả chương trình:
 
 #### 1. Cài đặt
 
-Việc đầu tiên là cần phải cài đặt package `Microsoft.Extensions.DependencyInjection`, lưu ý là ở mỗi thời điểm thì version có thể sẽ khác nhau:
+> [!NOTE]
+> Việc cài đặt chỉ cần làm đối với những project không support sẵn DI như console app, windows form, wpf, ... Ở những project đã support sẵn (web app, blazor...) thì chỉ cần sử dụng.
+
+Cần phải cài đặt package `Microsoft.Extensions.DependencyInjection`, lưu ý là ở mỗi thời điểm thì version có thể sẽ khác nhau:
 
 ```
 dotnet add package Microsoft.Extensions.DependencyInjection --version 8.0.0
@@ -346,3 +347,44 @@ IOrderService orderService = serviceProvider.GetRequiredService<IOrderService>()
 ```
 
 Xem [commit](https://github.com/oclockvn/dependency-injection-sample/commit/fa6c7570a6b648b362cfc575b1b5e95d4cdd7f24) để thấy sự thay đổi.
+
+#### 3. Quá trình hoạt động
+
+Để hiểu thêm về cách DI hoạt động, hay tiếp tục chỉnh sửa chương trình 1 chút. Mình sẽ tạo thêm 1 service nữa và inject nó vào `OrderService` (xem [commit](https://github.com/oclockvn/dependency-injection-sample/commit/bdbdc065dfedcc2739d734b2cf1b92099b671fd7)):
+
+![image](https://github.com/oclockvn/dotnet-dev-0-to-hero-vietnam/assets/3783976/e3e37c13-c41d-4add-8f7e-b5eae70d9869)
+
+Thử chạy lại chương trình, bạn sẽ nhận được exception như sau:
+
+> Unhandled exception. System.InvalidOperationException: Unable to resolve service for type 'di_sample.IEventService' while attempting to activate 'di_sample.OrderService'.
+
+Đây là exception bạn sẽ nhận được nếu như có 1 trong các dependency của OrderService chưa được "đăng ký". Để xử lý lỗi này, chỉ cần thêm event service vào collection:
+
+![image](https://github.com/oclockvn/dotnet-dev-0-to-hero-vietnam/assets/3783976/028a8e4a-d3dd-40ff-9b97-bf6d1c4588e1)
+
+Vậy chuyện gì đã xảy ra? Bạn có thể hình dung như sau:
+
+1. Khi bạn gọi tới `serviceProvider.GetRequiredService<IOrderService>()`.
+2. SP phát hiện class `OrderService` là class kế thừa `IOrderService` đã được khai báo thông qua `services.AddTransient<IOrderService, OrderService>();`.
+3. SP kiểm tra xem `OrderService` có những dependencies nào. SP phát hiện ra 2 dependencies là `IEmailService` và `IEventService`
+4. SP lấy `IEmailService` từ `ServiceCollection`. (Thực tế lúc này SP lại tiếp tục kiểm tra xem EmailService có dependencies hay không, quá trình này lặp lại cho tới khi tất cả các dependencies của nó đã được khởi tạo thành công). vì đã đăng ký EmailService nên ServiceCollection trả về instance của EmailService cho SP.
+5. SP lấy `IEventService` từ collection. Collection hét lớn: "Chưa đăng ký mà đòi lấy, có cái \*beep\* mà tao đưa". Thế là có exception.
+
+### Tạm kết
+
+Ở trên chỉ là 1 phần nhỏ trong kỹ thuật DI, từ đó hy vọng bạn sẽ dễ dàng tiếp cận được các document official của MS như:
+
+- [.NET dependency injection](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection)
+- [Tutorial: Use dependency injection in .NET](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection-usage)
+- [Dependency injection guidelines](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection-guidelines)
+
+Những khía cạnh bạn cần tìm hiểu thêm như:
+
+- Service lifetime: scope của 1 service
+- Services resolver: các cách resolve aka tạo instance
+- Circular dependencies: 2 service bị phụ thuộc lẫn nhau
+- Injection type: không chỉ có constructor injection mà còn có các loại inject khác nữa
+
+Code của bài viết: https://github.com/oclockvn/dependency-injection-sample
+
+Have fun!
