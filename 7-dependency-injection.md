@@ -4,8 +4,7 @@
 
 ### Hiểu về ý tưởng của Dependency Injection (DI)
 
-Kiến thức cơ bản về DI trong .NET (C#) có thể được tìm thấy ở đây: [.NET dependency injection](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection), tuy nhiên như đã đề cập
-ở trên, bạn sẽ có đôi chút mơ hồ nếu bạn không đủ kiến thức nền tảng (xuất phát không phải IT-based), do đó mình sẽ giải thích theo cách mình nghĩ là ai cũng sẽ dễ hiểu hơn.
+Kiến thức cơ bản về DI trong .NET (C#) có thể được tìm thấy ở đây: [.NET dependency injection](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection), tuy nhiên như đã đề cập ở trên, bạn sẽ có đôi chút mơ hồ nếu bạn không đủ kiến thức nền tảng (xuất phát không phải IT-based), do đó mình sẽ giải thích theo cách mình nghĩ là ai cũng sẽ dễ hiểu hơn.
 
 Nếu mình hỏi chatGPT như thể là 1 đứa trẻ:
 > Q: explain dependency injection in C# like I'm 5
@@ -62,7 +61,7 @@ sản xuất xe AAA
 hoàn thành xe
 ```
 
-có thể thấy để xây dựng 1 chiếc oto hoàn chỉnh, nhà máy phụ thuộc vào rất nhiều những manufacture khác. Ta nói nhà máy sản xuất AAA bị "phụ thuộc" vào manufacture SSS, CCC, hay nói cách khác,
+có thể thấy để xây dựng 1 chiếc oto hoàn chỉnh, nhà máy phụ thuộc vào rất nhiều những manufacture khác. Ta nói nhà máy sản xuất AAA bị "phụ thuộc" vào manufacture SSS, CCC; hay nói cách khác,
 SSS, CCC là những thành phần phụ thuộc (dependency) của AAA.
 
 Nếu mô phỏng quá trình này bằng C# ta sẽ có:
@@ -91,8 +90,8 @@ public class CarFactory {
     // make the car
     return new Car
     {
-      Frame = frame,
-      Engine = engine
+      MainFrame = frame,
+      MainEngine = engine
     };
   }
 } 
@@ -150,3 +149,200 @@ logger.LogInformation("Placing order: " + order.ToString());
 // 3. send email to customer
 emailService.Send(order.CustomerEmail, "Order details #123...");
 ```
+
+có thể thấy `logger` và `emailService` là 2 dependency của `orderService`, bình thường 2 services này sẽ được tạo bởi constructor như sau (mã giả):
+
+```cs
+public class OrderService
+{
+    private readonly ILogger<OrderService> logger = new Logger();
+    private readonly EmailService emailService = new();
+
+    public void PlaceOrder(Order order)
+    {
+        ...
+    }
+}
+```
+
+thực tế việc khởi tạo instance cho 2 services này sẽ phức tạp hơn, cụ thể như sau:
+
+Để tạo logger: https://learn.microsoft.com/en-us/dotnet/core/extensions/logging?tabs=command-line#get-started
+
+```cs
+using Microsoft.Extensions.Logging;
+
+using ILoggerFactory factory = LoggerFactory.Create(builder => builder.AddConsole());
+ILogger logger = factory.CreateLogger("Program");
+logger.LogInformation("Hello World! Logging is {Description}.", "fun");
+```
+
+để tạo `EmailService`, giả sử mình dùng [SendGrid](https://sendgrid.com/en-us) để gửi email (sendgrid client là dependency của EmailService):
+
+```cs
+var apiKey = "your-sendgrid-api-key";
+var client = new SendGridClient(apiKey);
+var emailService = new EmailService(client);
+```
+
+> Sample code: https://github.com/sendgrid/sendgrid-csharp
+
+tổng hợp lại mình sẽ có:
+
+```cs
+public class OrderService
+{
+    private readonly ILogger<OrderService> logger;
+    private readonly EmailService emailService;
+
+    public OrderService()
+    {
+        // create logger
+        using ILoggerFactory factory = LoggerFactory.Create(builder => builder.AddConsole());
+        logger = factory.CreateLogger<OrderService>("Program");
+
+        // create email service
+        var apiKey = "your-sendgrid-api-key";
+        var client = new SendGridClient(apiKey);
+        emailService = new EmailService(client);
+    }
+
+    public void PlaceOrder(Order order)
+    {
+        ...
+    }
+}
+```
+
+tới đây thì chắc đã đủ để thấy được chuyện "tự" quản lý các dependency nó phức tạp ra sao, đó là chưa kể các vấn đề về maintenance, testing, ... rất khó thực hiện với cách như hiện tại.
+
+**Lady and Gentlemen**, xin giới thiệu kỹ thuật dependency injection, chương trình được viết lại như sau:
+
+```cs
+public class OrderService
+{
+    private readonly ILogger<OrderService> logger;
+    private readonly EmailService emailService;
+
+    public OrderService(ILogger<OrderService> logger, EmailService emailService)
+    {
+        this.logger = logger;
+        this.emailService = emailService;
+    }
+
+    public void PlaceOrder(Order order)
+    {
+        ...
+    }
+}
+```
+
+nó đã đơn giản hơn rất nhiều. Tất nhiên không phải cứ làm như trên là xong (sẽ chưa chạy được đâu), tuy nhiên bạn có thể hình dung ra chuyện "dependency" là gì, và "injection" là gì rồi, bây giờ mình sẽ kết hợp 2 cái đó lại.
+
+### Dependency Injection
+
+![image](https://github.com/oclockvn/dotnet-dev-0-to-hero-vietnam/assets/3783976/cc49173c-968b-47e6-81b1-5acced839b69)
+
+> In software engineering, dependency injection is a programming technique in which an object or function receives other objects or functions that it requires, as opposed to creating them internally. Dependency injection aims to separate the concerns of constructing objects and using them, leading to loosely coupled programs...
+> --https://en.wikipedia.org/wiki/Dependency_injection
+
+hay nói 1 cách dễ hiểu hơn:
+
+> [!IMPORTANT]
+> Dependency injection là 1 kỹ thuật, trong đó 1 đối tượng không tự quản lý các dependency của nó mà được truyền vào từ bên ngoài.
+
+Các thành phần:
+
+- Services: chính là các class/interface trong C#. Trong ngữ cảnh DI, các đối tượng (class/interface) được xem như là các services.
+- `ServiceCollection`: là class chứa các services đã được đăng ký. Bạn cần "đăng ký" (thêm) tất cả các services vào `ServiceCollection` trước khi sử dụng.
+- `ServiceProvider`: là class có nhiệm vụ "cung cấp" các dependency cho 1 service khác.
+
+#### Setup DI
+
+Lấy ví dụ chương trình sau:
+
+```cs
+namespace di_sample;
+public static class Program
+{
+    public static void Main(string[] args)
+    {
+        IEmailService emailService = new EmailService();
+        IOrderService orderService = new OrderService(emailService);
+
+        orderService.PlaceOrder(new Order {});
+    }
+}
+
+public class Order { /*..*/ }
+
+public interface IOrderService { void PlaceOrder(Order order); }
+public class OrderService : IOrderService
+{
+    private readonly IEmailService emailService;
+
+    public OrderService(IEmailService emailService)
+    {
+        this.emailService = emailService;
+    }
+
+    public void PlaceOrder(Order order)
+    {
+        // Place order
+        emailService.SendEmail(order.CustomerEmail!, "Order Placed", "Your order has been placed");
+    }
+}
+
+public interface IEmailService { void SendEmail(string to, string subject, string body); }
+public class EmailService : IEmailService
+{
+    public void SendEmail(string to, string subject, string body)
+    {
+        // Send email
+        System.Console.WriteLine($"Email sent to {to} with subject {subject} and body {body}");
+    }
+}
+```
+
+Kết quả chương trình:
+
+![image](https://github.com/oclockvn/dotnet-dev-0-to-hero-vietnam/assets/3783976/8f89b446-bbb1-4091-8df4-6e86a4026f51)
+
+#### 1. Cài đặt
+
+Việc đầu tiên là cần phải cài đặt package `Microsoft.Extensions.DependencyInjection`, lưu ý là ở mỗi thời điểm thì version có thể sẽ khác nhau:
+
+```
+dotnet add package Microsoft.Extensions.DependencyInjection --version 8.0.0
+```
+
+#### 2. Sử dụng
+
+Đầu tiên, tạo `ServiceCollection` để chứa tất cả các services:
+
+```cs
+using Microsoft.Extensions.DependencyInjection;
+
+IServiceCollection services = new ServiceCollection();
+```
+
+tiếp, đăng ký tất cả các services liên quan, bao gồm dependencies và các services sử dụng dependency đó:
+
+```cs
+services.AddTransient<IEmailService, EmailService>(); // thêm EmailService vào ServiceCollection
+services.AddTransient<IOrderService, OrderService>(); // thêm OrderService vào ServiceCollection
+```
+
+kế tiếp, tạo `ServiceProvider` để có thể lấy bất cứ services nào từ collection:
+
+```cs
+IServiceProvider serviceProvider = services.BuildServiceProvider();
+```
+
+cuối cùng, lấy service cần sử dụng ra bằng `ServiceProvider`:
+
+```cs
+IOrderService orderService = serviceProvider.GetRequiredService<IOrderService>();
+```
+
+Xem [commit](https://github.com/oclockvn/dependency-injection-sample/commit/fa6c7570a6b648b362cfc575b1b5e95d4cdd7f24) để thấy sự thay đổi.
