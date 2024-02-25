@@ -100,7 +100,7 @@ public class CarFactory {
 
 ở ví dụ trên, `frameFactory` và `engineFactory` là 2 dependencies của class `CarFactory`. Ở đây mình đang "giả sử" là `frameFactory` và `engineFactory` đã được khởi tạo ở trước đó.
 
-Bình thường thì dependencies có thể được tạo ra ở bất cứ đâu bằng constructor của nó, ví dụ như sau:
+Bình thường thì dependencies có thể được tạo ra ở bất cứ đâu bằng constructor của nó, ví dụ dưới đây là 2 private fields như sau:
 
 ```cs
 public class CarFactory
@@ -119,5 +119,34 @@ public class CarFactory
 } 
 ```
 
+### (Dependency) Injection
 
+Thêm 1 ví dụ thực tế hơn để dễ thấy tác dụng và ý nghĩa của dependency, và chuyển đổi từ self-managed dependency sang injected dependency.
 
+```cs
+public class OrderService
+{
+    public void PlaceOrder(Order order)
+    {
+        // 1. log the order
+
+        // 2. save the order to the database
+
+        // 3. send email to customer
+    }
+}
+```
+
+với các bước trong method `PlaceOrder`, mình sẽ dùng các services khác (dependency) để thực hiện, ví dụ:
+
+```cs
+// 1. log the order
+logger.LogInformation("Placing order: " + order.ToString());
+```
+
+để gửi email, sử dụng email service:
+
+```cs
+// 3. send email to customer
+emailService.Send(order.CustomerEmail, "Order details #123...");
+```
